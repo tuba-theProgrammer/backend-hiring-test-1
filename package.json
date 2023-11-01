@@ -1,0 +1,26 @@
+{
+  "name": "backend-hiring-test-1",
+  "version": "1.0.0",
+  "description": "This test is a part of our hiring process for [backend positions](https://www.turingtechnologies.org/careers). It should take you between 2 and 4 hours depending on your experience. We made this task in a way that you'll end up learing how IVRs and Twilio's API works. Working on this task will help you in your future projects.",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.20",
+    "@types/node": "^18.0.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "generate-schema": "^2.6.0",
+    "mongoose": "^8.0.0",
+    "mongoose-geojson-schema": "^2.2.5",
+    "node-fetch": "^3.2.6",
+    "nodemon": "^3.0.1",
+    "twilio": "^4.19.0"
+  }
+}
