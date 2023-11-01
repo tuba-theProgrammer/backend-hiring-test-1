@@ -4,23 +4,39 @@ const { Request, Response } = express;
 import Call from '../Model/Call.js';
 import twilio  from 'twilio';
 
-    export const handleCall = async (req, res, next) => {
-      try {
-        console.log("here called me")
-        const twiml = new twilio.twiml.VoiceResponse();
-        const gather = twiml.gather({
-          numDigits: 1,
-          action: '/calls/redirect',
-          method: 'POST',
-        });
-        gather.say('Press 2 to record the call.');
-        res.set('Content-Type', 'text/xml');
-        res.send(twiml.toString());
-      } catch(err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-      }
+export const handleCall = async (req, res, next) => {
+  try {
+    const twiml = new twilio.twiml.VoiceResponse();
+    const gather = twiml.gather({
+      numDigits: 1,
+      action: '/calls/redirect',
+      method: 'POST',
+    });
+    gather.say('Press 2 to record the call.');
+
+    // Assuming you have Twilio request parameters in req.body
+    const { callerPhoneNumber } = req.body; // Replace with the actual parameter name
+
+    // Create an instance of the Call model and populate it
+    const call = new Call({
+      callerPhoneNumber,
+      recipientPhoneNumber: 'Destination Phone Number', // Replace with the actual recipient number
+      callStatus: 'Incoming', // Or any other relevant call status
+      callDuration: 0, // Initialize with 0, update as needed
+      voicemailUrl: '', // Initialize with an empty string
+    });
+
+    // Save the call information to the database
+    await call.save();
+
+    res.set('Content-Type', 'text/xml');
+    res.send(twiml.toString());
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
   }
+}
+
 
     export const handleRedirect = async (req, res, next) => {
       try {

@@ -6,7 +6,7 @@ import VoiceResponse from 'twilio/lib/twiml/VoiceResponse.js';
 export const handleVoicemail = async (req, res, next) => {
     try {
       // Assuming you have Twilio request parameters in req.body
-      const { RecordingUrl, From /* other Twilio parameters */ } = req.body;
+      const { RecordingUrl, From } = req.body;
 
       // Save the voicemail recording URL to the database
       const voicemail = new Voicemail({
