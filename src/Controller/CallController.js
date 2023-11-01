@@ -20,10 +20,9 @@ export const handleCall = async (req, res, next) => {
     // Create an instance of the Call model and populate it
     const call = new Call({
       callerPhoneNumber,
-      recipientPhoneNumber: 'Destination Phone Number', // Replace with the actual recipient number
-      callStatus: 'Incoming', // Or any other relevant call status
-      callDuration: 0, // Initialize with 0, update as needed
-      voicemailUrl: '', // Initialize with an empty string
+      recipientPhoneNumber: '+17813289877',  // can be replace with other twille number 
+      callStatus: 'Incoming',
+      callDuration: 0,
     });
 
     // Save the call information to the database

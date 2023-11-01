@@ -5,7 +5,6 @@ const callSchema = new mongoose.Schema({
   recipientPhoneNumber: String,
   callStatus: String,
   callDuration: Number,
-  voicemailUrl: String,
   timestamp: { type: Date, default: Date.now },
 });
 
